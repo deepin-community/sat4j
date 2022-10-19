@@ -1,0 +1,32 @@
+From: Markus Koschany <apo@debian.org>
+Date: Fri, 13 Apr 2018 18:53:35 +0200
+Subject: encoding
+
+Fix FTBFS with Java 9 by specifying the encoding everywhere.
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=893411
+---
+ build.xml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/build.xml b/build.xml
+index 88f9620..e6016a5 100644
+--- a/build.xml
++++ b/build.xml
+@@ -326,6 +326,7 @@
+ 		destdir="${build}"
+ 		source="1.5"
+ 		target="${target}"
++		encoding="iso-8859-1"
+ 		debug="true"
+ 	        includeantruntime="true">
+ 			<classpath refid="somePath"/>
+@@ -430,7 +431,8 @@
+         <target name="tests" 
+           description="Launch JUnit tests and generate a report">
+ 		<echo>Compiling test files</echo>
+-		<javac srcdir="${test}" destdir="${build}" source="1.5" target="1.5" debug="true">
++		<javac srcdir="${test}" destdir="${build}" source="1.5" target="1.5"
++			debug="true" encoding="iso-8859-1">
+ 			<classpath refid="somePath"/>
+ 		</javac>
+ 		<echo>Running JUNIT tests</echo>
